@@ -2,8 +2,8 @@ name: DRAMeXchange Daily Alert
 
 on:
   schedule:
-    # Every day at 10:00 UTC (5 AM EST)
-    - cron: '0 10 * * *'
+    # Every day at 9:00 UTC (5 AM ET year-round)
+    - cron: '0 9 * * *'
 
   # Allow manual trigger for testing
   workflow_dispatch:
