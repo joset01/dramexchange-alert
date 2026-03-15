@@ -25,7 +25,7 @@ def capture_screenshot():
         page = browser.new_page(viewport={"width": 1280, "height": 1800})
 
         print("Loading DRAMeXchange page...")
-        page.goto("https://www.dramexchange.com/", wait_until="networkidle", timeout=60000)
+        page.goto("https://www.dramexchange.com/", wait_until="domcontentloaded", timeout=60000)
 
         # Wait for AJAX-loaded price tables to populate
         page.wait_for_timeout(6000)
