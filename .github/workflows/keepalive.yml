@@ -1,0 +1,24 @@
+name: Keepalive
+
+# Pushes an empty commit weekly to reset the 60-day inactivity clock
+# that would otherwise cause GitHub to auto-disable scheduled workflows.
+
+on:
+  schedule:
+    - cron: '0 12 * * 1'  # Every Monday 12:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Push empty commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "keepalive: reset 60-day inactivity clock"
+          git push
